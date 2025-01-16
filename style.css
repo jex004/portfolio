@@ -1,8 +1,7 @@
 /* General styles */
 body {
   max-width: 100ch;
-  text-align: center;
-  margin-inline: auto;
+  margin: auto;
   padding: 35px;
   font-family: Arial, sans-serif;
 }
@@ -11,16 +10,14 @@ body {
 nav {
   display: flex;
   justify-content: center;
-  background-color: #333;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 20px; /* Separate nav from content */
-  border-bottom: 1px solid oklch(80% 3% 200); /* Cool gray border */
+  border-bottom: 1px solid oklch(80% 3% 200); /* Subtle cool gray bottom border */
+  margin-bottom: 20px; /* Separate from content */
+  padding-bottom: 5px;
 }
 
 /* Remove list styles */
 nav ul {
-  display: contents;
+  display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -28,26 +25,25 @@ nav ul {
 
 /* Navigation links */
 nav li {
-  flex: 1;
+  margin: 0 15px;
 }
 
 nav a {
   text-decoration: none; /* Remove underline */
-  color: inherit; /* Use parent's text color */
+  color: black; /* Make text inherit default color */
   text-align: center;
-  padding: 0.5em;
-  transition: background 0.3s ease-in-out;
+  font-weight: bold;
+  padding: 0.5em 1em;
 }
 
 /* Hover effect */
 nav a:hover {
-  background-color: #555;
-  border-radius: 5px;
+  color: #555;
 }
 
-/* Current page link */
+/* Current page link styling */
 nav a.current {
-  border-bottom: 0.4em solid oklch(85% 3% 200); /* Thicker bottom border */
-  padding-bottom: 0.1em; /* Reduce padding to counter border height */
   font-weight: bold;
+  border-bottom: 4px solid oklch(85% 3% 200); /* Thick bottom border */
+  padding-bottom: 5px; /* Reduce padding to counteract border height */
 }
