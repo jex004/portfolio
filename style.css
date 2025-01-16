@@ -1,6 +1,37 @@
+/* General styles */
 body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
-    font: 100%/1.5 system-ui;
-  }
+  max-width: 100ch;
+  text-align: center;
+  margin-inline: auto;
+  padding: 35px;
+  font-family: Arial, sans-serif;
+}
+
+/* Navigation styling */
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+nav a {
+  flex: 1;
+  text-align: center;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+nav a:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+nav a.current {
+  background-color: #777;
+  border-radius: 5px;
+}
