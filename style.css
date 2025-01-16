@@ -1,12 +1,14 @@
+/* Define the accent color */
 :root {
-  --color-accent: oklch(65% 50% 0); /* Define the accent color */
+  --color-accent: oklch(65% 50% 0);
 }
 
+/* Apply accent color */
 html {
-  accent-color: var(--color-accent); /* Set accent color */
+  accent-color: var(--color-accent);
 }
 
-/* General styles */
+/* General body styles */
 body {
   max-width: 100ch;
   margin: auto;
@@ -14,13 +16,15 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* Navigation styling */
+/* Navigation bar styles */
 nav {
-  display: contents;
+  display: flex;
   justify-content: center;
-  border-bottom: 1px solid oklch(80% 3% 200); /* Subtle cool gray border */
+  align-items: center;
+  background-color: #333; /* Dark background like in the image */
+  border-radius: 10px; /* Match rounded corners */
+  padding: 15px;
   margin-bottom: 20px;
-  padding-bottom: 5px;
 }
 
 /* Remove list styles */
@@ -33,45 +37,48 @@ nav ul {
 
 /* Navigation links */
 nav li {
-  margin: 0 15px;
+  margin: 0 20px; /* Increase spacing between links */
 }
 
 nav a {
   text-decoration: none;
-  color: black;
-  text-align: center;
+  color: white; /* Ensure contrast against dark background */
   font-weight: bold;
-  padding: 0.5em 1em;
-  position: relative; /* Required for pseudo-element */
+  position: relative;
+  padding: 10px 15px;
 }
 
-/* Current page link styling */
+/* Active Page Indicator */
 nav a.current {
   font-weight: bold;
-  border-bottom: 4px solid var(--color-accent); /* Thick accent-colored bottom border */
-  padding-bottom: 5px; /* Reduce padding to counteract border height */
 }
 
-/* Hover effect with accent color */
-nav a:hover {
-  color: black;
-}
-
-/* Underline effect on hover */
-nav a::after {
+/* Underline effect for the active page */
+nav a.current::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -4px;
+  bottom: -8px;
   height: 4px;
-  background-color: var(--color-accent); /* Accent color */
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-/* Show underline on hover */
-nav a:hover::after {
+  background-color: var(--color-accent);
   opacity: 1;
 }
 
+/* Hover effect */
+nav a:hover {
+  color: white;
+}
+
+/* Underline effect on hover */
+nav a:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 4px;
+  background-color: var(--color-accent);
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
