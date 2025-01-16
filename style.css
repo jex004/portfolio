@@ -8,7 +8,17 @@ body {
 }
 
 /* Navigation styling */
-/* Reset list styling */
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px; /* Separate nav from content */
+  border-bottom: 1px solid oklch(80% 3% 200); /* Cool gray border */
+}
+
+/* Remove list styles */
 nav ul {
   display: flex;
   list-style: none;
@@ -16,25 +26,28 @@ nav ul {
   padding: 0;
 }
 
+/* Navigation links */
 nav li {
   flex: 1;
 }
 
 nav a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Use parent's text color */
   text-align: center;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
+  padding: 0.5em;
   transition: background 0.3s ease-in-out;
 }
 
+/* Hover effect */
 nav a:hover {
   background-color: #555;
   border-radius: 5px;
 }
 
+/* Current page link */
 nav a.current {
-  background-color: #777;
-  border-radius: 5px;
+  border-bottom: 0.4em solid oklch(85% 3% 200); /* Thicker bottom border */
+  padding-bottom: 0.1em; /* Reduce padding to counter border height */
+  font-weight: bold;
 }
