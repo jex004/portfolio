@@ -30,7 +30,7 @@ nav li {
 
 nav a {
   text-decoration: none; /* Remove underline */
-  color: black; /* Make text inherit default color */
+  color: white; /* Make text inherit default color */
   text-align: center;
   font-weight: bold;
   padding: 0.5em 1em;
