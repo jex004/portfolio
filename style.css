@@ -27,11 +27,13 @@ nav a {
 }
 
 nav a:hover {
+  flex: 1;
   background-color: #8d8d8d;
   border-radius: 5px;
 }
 
 nav a.current {
+  flex: 1;
   background-color: #bdbdbd;
   border-radius: 5px;
 }
