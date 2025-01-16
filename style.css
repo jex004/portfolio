@@ -21,7 +21,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff; /* Dark background like in the image */
+  background-color: #ffffff; 
   border-radius: 10px; /* Match rounded corners */
   padding: 15px;
   margin-bottom: 20px;
@@ -42,7 +42,7 @@ nav li {
 
 nav a {
   text-decoration: none;
-  color: rgb(0, 0, 0); /* Ensure contrast against dark background */
+  color: rgb(0, 0, 0);
   font-weight: bold;
   position: relative;
   padding: 10px 15px;
@@ -61,13 +61,13 @@ nav a.current::after {
   right: 0;
   bottom: -8px;
   height: 4px;
-  background-color: var(--color-accent);
+  background-color: oklch(80% 3% 200);
   opacity: 1;
 }
 
 /* Hover effect */
 nav a:hover {
-  color: white;
+  color: rgb(80, 80, 80);
 }
 
 /* Underline effect on hover */
