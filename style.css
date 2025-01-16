@@ -11,7 +11,7 @@ body {
 nav {
   display: flex;
   justify-content: center;
-  background-color: #333;
+  background-color: #717171;
   padding: 10px;
   border-radius: 8px;
 }
@@ -27,11 +27,11 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #555;
+  background-color: #8d8d8d;
   border-radius: 5px;
 }
 
 nav a.current {
-  background-color: #777;
+  background-color: #bdbdbd;
   border-radius: 5px;
 }
