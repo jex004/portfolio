@@ -21,7 +21,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #333; /* Dark background like in the image */
+  background-color: #ffffff; /* Dark background like in the image */
   border-radius: 10px; /* Match rounded corners */
   padding: 15px;
   margin-bottom: 20px;
@@ -42,7 +42,7 @@ nav li {
 
 nav a {
   text-decoration: none;
-  color: white; /* Ensure contrast against dark background */
+  color: rgb(0, 0, 0); /* Ensure contrast against dark background */
   font-weight: bold;
   position: relative;
   padding: 10px 15px;
