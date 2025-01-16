@@ -1,3 +1,11 @@
+:root {
+  --color-accent: oklch(65% 50% 0); /* Define the accent color */
+}
+
+html {
+  accent-color: var(--color-accent); /* Set accent color */
+}
+
 /* General styles */
 body {
   max-width: 100ch;
@@ -8,10 +16,10 @@ body {
 
 /* Navigation styling */
 nav {
-  display: flex;
+  display: contents;
   justify-content: center;
-  border-bottom: 1px solid oklch(80% 3% 200); /* Subtle cool gray bottom border */
-  margin-bottom: 20px; /* Separate from content */
+  border-bottom: 1px solid oklch(80% 3% 200); /* Subtle cool gray border */
+  margin-bottom: 20px;
   padding-bottom: 5px;
 }
 
@@ -29,21 +37,41 @@ nav li {
 }
 
 nav a {
-  text-decoration: none; /* Remove underline */
-  color: white; /* Make text inherit default color */
+  text-decoration: none;
+  color: black;
   text-align: center;
   font-weight: bold;
   padding: 0.5em 1em;
-}
-
-/* Hover effect */
-nav a:hover {
-  color: #555;
+  position: relative; /* Required for pseudo-element */
 }
 
 /* Current page link styling */
 nav a.current {
   font-weight: bold;
-  border-bottom: 4px solid oklch(85% 3% 200); /* Thick bottom border */
+  border-bottom: 4px solid var(--color-accent); /* Thick accent-colored bottom border */
   padding-bottom: 5px; /* Reduce padding to counteract border height */
 }
+
+/* Hover effect with accent color */
+nav a:hover {
+  color: black;
+}
+
+/* Underline effect on hover */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 4px;
+  background-color: var(--color-accent); /* Accent color */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Show underline on hover */
+nav a:hover::after {
+  opacity: 1;
+}
+
