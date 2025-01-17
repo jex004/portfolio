@@ -8,6 +8,26 @@ html {
   accent-color: var(--color-accent);
 }
 
+/* General Typography for Headings */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1; 
+  text-wrap: balance;
+}
+
+/* Improve hierarchy by significantly increasing h1 size */
+h1 {
+  font-size: 400%; 
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+/* Adjust h2 to maintain contrast from h1 */
+h2 {
+  font-size: 200%; 
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
 /* General body */
 body {
   max-width: 100ch;
@@ -17,55 +37,69 @@ body {
   /* Navigation bar */
   nav {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     background-color: #ffffff; 
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: rgb(143, 143, 143);
-    padding: 15px;
+    border-bottom-color: oklch(80% 3% 200);
+    padding: 0.5em;
     margin-bottom: 20px;
     a {
+      flex: 1;
       text-decoration: none;
       color: rgb(0, 0, 0);
-      font-weight: bold;
       position: relative;
-      padding: 10px 15px;
+      padding: 0.5em;
     }
     /* Active Page Indicator */
     a.current {
       font-weight: bold;
+      border-bottom-width: 0.4em;
+      border-bottom-color: oklch(80% 3% 200);
+      border-bottom-style: solid;
+      padding-bottom: 0.1em;
     }
-    Underline effect for the active page
-    a.current::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -8px;
-      height: 4px;
-      background-color: oklch(80% 3% 200);
-      opacity: 1;
-    }
-    /* Hover effect */
     a:hover {
       color: rgb(80, 80, 80);
-      background-color: rgb(242, 202, 218);
-    }
-    /* Underline effect on hover */
-    a:hover::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -8px;
-      height: 4px;
-      background-color: var(--color-accent);
-      opacity: 1;
-      transition: opacity 0.3s ease-in-out;
+      background-color: oklch(from var(--color-accent) 95% 5% h);
+      border-bottom-color: var(--color-accent);
+      border-bottom-width: 0.4em;
+      border-bottom-style: solid;
+      padding-bottom: 0.1em;
     }
   }
+    input, textarea, button {
+      font: inherit;
+  }
+  form {
+    display: grid;
+    grid-template-columns: auto 1fr; /* First column auto-sized, second takes remaining space */
+    gap: 1em; /* Adds spacing between grid items */
+  }
+  label {
+    display: grid;
+    grid-template-columns: subgrid; /* Make labels follow the form grid */
+    grid-column: 1 / -1;
+  }
+  button {
+    grid-column: 1 / -1;
+    font: inherit;
+  }
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    gap: 1em;
+  }
+  article {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+  }   
+  article h2 {
+    margin: 0;
+  }  
 }
+  
 
   
 
