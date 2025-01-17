@@ -8,78 +8,65 @@ html {
   accent-color: var(--color-accent);
 }
 
-/* General body styles */
+/* General body */
 body {
   max-width: 100ch;
   margin: auto;
   padding: 35px;
   font-family: Arial, sans-serif;
+  /* Navigation bar */
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; 
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(143, 143, 143);
+    padding: 15px;
+    margin-bottom: 20px;
+    a {
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+      position: relative;
+      padding: 10px 15px;
+    }
+    /* Active Page Indicator */
+    a.current {
+      font-weight: bold;
+    }
+    Underline effect for the active page
+    a.current::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 4px;
+      background-color: oklch(80% 3% 200);
+      opacity: 1;
+    }
+    /* Hover effect */
+    a:hover {
+      color: rgb(80, 80, 80);
+      background-color: rgb(242, 202, 218);
+    }
+    /* Underline effect on hover */
+    a:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 4px;
+      background-color: var(--color-accent);
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+  }
 }
 
-/* Navigation bar styles */
-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff; 
-  border-radius: 10px; /* Match rounded corners */
-  padding: 15px;
-  margin-bottom: 20px;
-}
+  
 
-/* Remove list styles */
-nav ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
 
-/* Navigation links */
-nav li {
-  margin: 0 20px; /* Increase spacing between links */
-}
-
-nav a {
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
-  position: relative;
-  padding: 10px 15px;
-}
-
-/* Active Page Indicator */
-nav a.current {
-  font-weight: bold;
-}
-
-/* Underline effect for the active page */
-nav a.current::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -8px;
-  height: 4px;
-  background-color: oklch(80% 3% 200);
-  opacity: 1;
-}
-
-/* Hover effect */
-nav a:hover {
-  color: rgb(80, 80, 80);
-  background-color: rgb(242, 202, 218);
-}
-
-/* Underline effect on hover */
-nav a:hover::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -8px;
-  height: 4px;
-  background-color: var(--color-accent);
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-}
