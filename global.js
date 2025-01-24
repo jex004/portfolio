@@ -20,7 +20,7 @@ for (let p of pages) {
 
 
   // Adjust URLs for non-home pages
-  url = !ARE_WE_HOME && !url.startsWith('http') ? '../portfolio/' + url : url;
+  url = !ARE_WE_HOME && !url.startsWith('http') && !url.includes('portfolio') ? '/portfolio/' + url : url;
 
   // Create the link
   let a = document.createElement('a');
