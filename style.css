@@ -134,15 +134,27 @@ body {
 
 /* Dark mode switcher styling */
 .color-scheme {
-  display: block;
-  margin-bottom: 20px;
-  font-size: 1rem;
-  font-weight: bold;
+  position: absolute;
+  top: 1rem; 
+  right: 1rem; 
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: inherit;
+  display: flex; /* Align label and select box horizontally */
+  align-items: center; /* Center align text and select box vertically */
+  gap: 0.3rem; /* Add space between label and select */
+  background: none;
+  padding: 0;
 }
 
+/* Select dropdown styling */
 .color-scheme select {
   font: inherit;
-  margin-left: 0.5em;
-  padding: 0.2em;
+  padding: 0.2em 0.5em;
+  border-radius: 0.25em;
+  color: inherit;
+  cursor: pointer;
 }
+
+
 
