@@ -18,6 +18,11 @@ for (let p of pages) {
   let url = p.url;
   let title = p.title;
 
+  // Adjust URLS for Github
+  if (url.includes('github')) {
+    url = '/portfoilo/' + url;
+  }
+
   // Adjust URLs for non-home pages
   url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
 
