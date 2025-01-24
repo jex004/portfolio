@@ -8,6 +8,9 @@ const pages = [
   { url: 'https://github.com/jex004', title: 'GitHub' }
 ];
 
+// Detect if we are on GitHub Pages
+const IS_GITHUB_PAGES = location.hostname === 'jex004.github.io'; // Replace with your GitHub Pages domain if different
+const BASE_PATH = IS_GITHUB_PAGES ? '/portfolio' : ''; // Add your repository name for GitHub Pages
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
 // Create and prepend the nav element
@@ -18,9 +21,8 @@ for (let p of pages) {
   let url = p.url;
   let title = p.title;
 
-
-  // Adjust URLs for non-home pages
-  url = !ARE_WE_HOME && !url.startsWith('http') && !url.includes('portfolio') ? '/portfolio/' + url : url;
+  // Adjust URLs for GitHub Pages or non-home pages
+  url = !ARE_WE_HOME && !url.startsWith('http') ? BASE_PATH + '/' + url : url;
 
   // Create the link
   let a = document.createElement('a');
@@ -28,18 +30,22 @@ for (let p of pages) {
   a.textContent = title;
 
   // Highlight the current page
+  const currentPath = location.pathname.endsWith('/')
+    ? location.pathname
+    : location.pathname + '/';
   if (a.host === location.host && a.pathname === location.pathname) {
     a.classList.add('current');
   }
 
   // Open external links in a new tab
-  if (a.host !== location.host) {
+  if (!url.startsWith(BASE_PATH) && !url.startsWith('/')) {
     a.target = '_blank';
   }
 
   // Add the link to the navigation
   nav.append(a);
 }
+
 
 // Add the theme switcher
 document.body.insertAdjacentHTML(
