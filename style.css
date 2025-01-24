@@ -6,6 +6,7 @@
 /* Apply accent color */
 html {
   accent-color: var(--color-accent);
+  /* color-scheme: light dark; */
 }
 
 /* General Typography for Headings */
@@ -50,66 +51,77 @@ body {
   nav {
     display: flex;
     text-align: center;
-    background-color: #ffffff; 
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: oklch(80% 3% 200);
+    --border-color: oklch(50% 10% 200 / 40%);
+    border-bottom-color: var(--border-color);
     padding: 0.5em;
     margin-bottom: 20px;
-    a {
-      flex: 1;
-      text-decoration: none;
-      color: rgb(0, 0, 0);
-      position: relative;
-      padding: 0.5em;
-    }
-    /* Active Page Indicator */
-    a.current {
-      font-weight: bold;
-      border-bottom-width: 0.4em;
-      border-bottom-color: oklch(80% 3% 200);
-      border-bottom-style: solid;
-      padding-bottom: 0.1em;
-    }
-    a:hover {
-      color: rgb(80, 80, 80);
-      background-color: oklch(from var(--color-accent) 95% 5% h);
-      border-bottom-color: var(--color-accent);
-      border-bottom-width: 0.4em;
-      border-bottom-style: solid;
-      padding-bottom: 0.1em;
-    }
   }
-    input, textarea, button {
-      font: inherit;
+
+  nav a {
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    padding: 0.5em;
   }
-  form {
-    display: grid;
-    grid-template-columns: auto 1fr; /* First column auto-sized, second takes remaining space */
-    gap: 1em; /* Adds spacing between grid items */
+
+  /* Active Page Indicator */
+  nav a.current {
+    font-weight: bold;
+    border-bottom-width: 0.4em;
+    border-bottom-color: var(--border-color);
+    border-bottom-style: solid;
+    padding-bottom: 0.1em;
   }
-  label {
-    display: grid;
-    grid-template-columns: subgrid; /* Make labels follow the form grid */
-    grid-column: 1 / -1;
+
+  nav a:hover {
+    color: rgb(80, 80, 80);
+    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+    border-bottom-color: var(--color-accent);
+    border-bottom-width: 0.4em;
+    border-bottom-style: solid;
+    padding-bottom: 0.1em;
   }
-  button {
-    grid-column: 1 / -1;
+
+  input, textarea, button {
     font: inherit;
   }
-  .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-    gap: 1em;
+
+  form {
+  display: grid;
+  grid-template-columns: auto 1fr; /* First column auto-sized, second takes remaining space */
+  gap: 1em; /* Adds spacing between grid items */
   }
+
+  label {
+  display: grid;
+  grid-template-columns: subgrid; /* Make labels follow the form grid */
+  grid-column: 1 / -1;
+  }
+
+  button {
+  grid-column: 1 / -1;
+  font: inherit;
+  }
+
+  .projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
+  }
+
   article {
-    display: grid;
-    grid-template-rows: subgrid;
-    grid-row: span 3;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
   }   
+
   article h2 {
-    margin: 0;
+  margin: 0;
   }  
+
   section {
     h2 {
       border-bottom-width: 1px;
@@ -119,8 +131,18 @@ body {
     }
   }
 }
-  
 
-  
+/* Dark mode switcher styling */
+.color-scheme {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+}
 
+.color-scheme select {
+  font: inherit;
+  margin-left: 0.5em;
+  padding: 0.2em;
+}
 

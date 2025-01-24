@@ -39,3 +39,31 @@ for (let p of pages) {
   // Add the link to the navigation
   nav.append(a);
 }
+
+// Add the theme switcher
+document.body.insertAdjacentHTML(
+  'afterbegin',
+  `
+  <label class="color-scheme">
+    Theme:
+    <select id="theme-selector">
+      <option value="light dark">Automatic</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </label>
+`);
+
+// Handle theme selection
+const themeSelector = document.getElementById('theme-selector');
+themeSelector.addEventListener('change', (event) => {
+  document.documentElement.style.colorScheme = event.target.value;
+  localStorage.setItem('theme', event.target.value);
+});
+
+// Load saved theme from localStorage
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  themeSelector.value = savedTheme;
+  document.documentElement.style.colorScheme = savedTheme;
+}
