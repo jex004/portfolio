@@ -9,20 +9,17 @@ html {
   /* color-scheme: light dark; */
 }
 
-/* General Typography for Headings */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1; 
   text-wrap: balance;
 }
 
-/* Improve hierarchy by significantly increasing h1 size */
 h1 {
   font-size: 400%; 
   font-weight: bold;
   margin-bottom: 0.5em;
 }
 
-/* Adjust h2 to maintain contrast from h1 */
 h2 {
   font-size: 200%; 
   font-weight: bold;
