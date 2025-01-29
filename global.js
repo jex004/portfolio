@@ -97,18 +97,16 @@ export async function fetchJSON(url) {
   }
 }
 
-export function renderProjects(project, containerElement, headingLevel = 'h2') {
-  if (!project || typeof project !== 'object') {
-      console.error('Invalid project data:', project);
-      return;
-  }
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+
+  // Check if container is a valid instance
 
   if (!(containerElement instanceof HTMLElement)) {
       console.error('Invalid container element:', containerElement);
       return;
   }
-
-  // Clear existing content to avoid duplication
+  
+  // Clear existing content
   containerElement.innerHTML = '';
 
   // Validate the heading level (only allow h1-h6)
@@ -116,53 +114,31 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
       console.warn(`Invalid heading level "${headingLevel}", defaulting to h2.`);
       headingLevel = 'h2';
   }
+  
+  // Loop through each project and create its article
+  projects.forEach(project => {
+      const article = document.createElement('article');
 
-  // Create the article element
-  const article = document.createElement('article');
+      // Create the heading dynamically
+      const heading = document.createElement(headingLevel);
+      heading.textContent = project.title;
 
-  // Populate article content dynamically
-  article.innerHTML = `
-    <h3>${project.title}</h3>
-    <img src="${project.image}" alt="${project.title}">
-    <p>${project.description}</p>
-`;
+      // Create the image element
+      const img = document.createElement('img');
+      img.src = project.image;
+      img.alt = project.title;
 
-  // Append the article to the container
-  containerElement.appendChild(article);
+      // Create the paragraph element
+      const description = document.createElement('p');
+      description.textContent = project.description;
+
+      // Append elements to the article
+      article.appendChild(heading);
+      article.appendChild(img);
+      article.appendChild(description);
+
+      // Append the article to the container
+      containerElement.appendChild(article);
+  });
 }
 
-// export function renderProjects(project, containerElement, headingLevel = 'h2') {
-//   // Validate containerElement
-//   if (!(containerElement instanceof HTMLElement)) {
-//       console.error('Invalid container element');
-//       return;
-//   }
-  
-//   // Validate headingLevel to ensure it's a valid HTML heading tag
-//   const validHeadingLevels = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-//   if (!validHeadingLevels.includes(headingLevel)) {
-//       console.warn(`Invalid heading level: ${headingLevel}. Defaulting to h2.`);
-//       headingLevel = 'h2';
-//   }
-  
-//   // Clear existing content
-//   containerElement.innerHTML = '';
-  
-//   // Create an article element
-//   const article = document.createElement('article');
-  
-//   // Handle missing or invalid project properties
-//   const title = project.title || 'Untitled Project';
-//   const imageSrc = project.image || 'default-image.jpg'; // Provide a fallback image
-//   const description = project.description || 'No description available.';
-  
-//   // Populate the article with dynamic content
-//   article.innerHTML = `
-//       <${headingLevel}>${title}</${headingLevel}>
-//       <img src="${imageSrc}" alt="${title}">
-//       <p>${description}</p>
-//   `;
-  
-//   // Append the article to the container
-//   containerElement.appendChild(article);
-// }
