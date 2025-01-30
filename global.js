@@ -105,6 +105,12 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
       console.error('Invalid container element:', containerElement);
       return;
   }
+
+  // Update project count in the header
+  const projectsTitle = document.querySelector('.projects-title');
+  if (projectsTitle) {
+      projectsTitle.textContent = `${projects.length} Projects`;
+  }
   
   // Clear existing content
   containerElement.innerHTML = '';
@@ -123,22 +129,31 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
       const heading = document.createElement(headingLevel);
       heading.textContent = project.title;
 
-      // Create the image element
-      const img = document.createElement('img');
-      img.src = project.image;
-      img.alt = project.title;
+      article.innerHTML = `
+      <h3>${project.title}</h3>
+      <img src="${project.image}" alt="${project.title}">
+      <p>${project.description}</p>
+      `;
 
-      // Create the paragraph element
-      const description = document.createElement('p');
-      description.textContent = project.description;
+      // // Create the image element
+      // const img = document.createElement('img');
+      // img.src = project.image;
+      // img.alt = project.title;
 
-      // Append elements to the article
-      article.appendChild(heading);
-      article.appendChild(img);
-      article.appendChild(description);
+      // // Create the paragraph element
+      // const description = document.createElement('p');
+      // description.textContent = project.description;
+
+      // // Append elements to the article
+      // article.appendChild(heading);
+      // article.appendChild(img);
+      // article.appendChild(description);
 
       // Append the article to the container
       containerElement.appendChild(article);
   });
 }
 
+export async function fetchGitHubData(username) {
+  return fetchJSON(`https://api.github.com/users/${username}`);
+}
