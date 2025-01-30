@@ -1,21 +1,25 @@
 [
     {
         "title": "Lorem ipsum dolor sit.",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae porro unde distinctio culpa eum nihil eveniet! Amet optio, sint voluptate, aliquid iusto aspernatur temporibus pariatur, natus eligendi tempora accusamus perferendis!"
     },
     {
         "title": "Soluta sed accusantium iure.",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Quasi, error iste animi eveniet accusantium reiciendis saepe aliquid quis odit itaque laborum nisi repudiandae dicta doloremque voluptate quisquam alias dolore et expedita tempore praesentium, iusto vero! Pariatur, nihil quam."
     },
     {
         "title": "Error quis tempora incidunt.",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Accusantium dicta laboriosam expedita. Aut magnam accusamus, atque ipsa ullam expedita corporis aliquam quia? Nam, sapiente quidem ab repellendus labore, omnis laborum atque voluptatem nihil quam provident dolor at deserunt!"
     },
     {
         "title": "Iure inventore non modi.",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Nulla, placeat. Provident neque dolores vitae at deleniti nihil, eos alias dicta, quis sed, autem nulla facilis quasi id veniam obcaecati illum quod tenetur et. Veniam suscipit neque odit magni!"
     },
