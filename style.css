@@ -112,7 +112,7 @@ body {
   article {
   display: grid;
   grid-template-rows: subgrid;
-  grid-row: span 3;
+  grid-row: span 4;
   }   
 
   article h2 {
@@ -140,7 +140,7 @@ body {
       grid-template-columns: repeat(4, 1fr);
       text-align: center;
       gap: 10px; 
-      font-family: Arial, sans-serif; 
+      font-family: FreeMono, monospace; 
     }
     
     dt {
