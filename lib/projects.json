@@ -3,25 +3,25 @@
         "title": "Hypixel Murder Mystery Stats Discord Bot",
         "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae porro unde distinctio culpa eum nihil eveniet! Amet optio, sint voluptate, aliquid iusto aspernatur temporibus pariatur, natus eligendi tempora accusamus perferendis!"
+        "description": "Developed a Python-based Discord server bot that provides detailed player statistics and enables comparisons across multiple players for the 'Murder Mystery' minigame genre on the Hypixel Minecraft server."
     },
     {
         "title": "How Do Different Weather Conditions Affect NYC Subway Ridership?",
         "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Quasi, error iste animi eveniet accusantium reiciendis saepe aliquid quis odit itaque laborum nisi repudiandae dicta doloremque voluptate quisquam alias dolore et expedita tempore praesentium, iusto vero! Pariatur, nihil quam."
+        "description": "Generated a detailed visualization that showcases the relationships between weather conditions such as rainfall and sunshine on NYC subway ridership using Altair."
     },
     {
         "title": "Playlette: A Colour Palette Generator",
         "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Accusantium dicta laboriosam expedita. Aut magnam accusamus, atque ipsa ullam expedita corporis aliquam quia? Nam, sapiente quidem ab repellendus labore, omnis laborum atque voluptatem nihil quam provident dolor at deserunt!"
+        "description": "Collaborated with a team of four to develop a software tool utilizing the Spotify API to generate a custom color palette based on the mood and song attributes of a user-provided Spotify playlist."
     },
     {
         "title": "Recipe Complexity Analysis",
         "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Nulla, placeat. Provident neque dolores vitae at deleniti nihil, eos alias dicta, quis sed, autem nulla facilis quasi id veniam obcaecati illum quod tenetur et. Veniam suscipit neque odit magni!"
+        "description": "Collaborated with a team member to analyze the impact of recipe complexity on recipe popularity on food.com as measured by the amount of user interactions in the form of ratings and reviews."
     },
     {
         "title": "Blah Blah Blah Blah",
@@ -33,7 +33,7 @@
         "title": "Loan Applications Project",
         "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Ea blanditiis quibusdam est eos, maiores consectetur nam quae aliquid totam maxime? Repellendus adipisci assumenda facere temporibus consectetur officia molestias, doloribus, exercitationem blanditiis dolor dicta consequuntur voluptatem delectus numquam dignissimos."
+        "description": "Analyzed a dataset of loan applicant data to assess eligibility for loan approval based on factors such as debt-to-income ratio, FICO scores, home ownership, and more."
     },
     {
         "title": "Grade Calculator for DSC80 at UCSD",
@@ -69,6 +69,6 @@
         "title": "Hypixel Assassins Leaderboard",
         "year": "2020",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Created a dynamic, live leaderboard for the Assassins minigame on the Hypixel Minecraft server. Scraped and parsed data using Google Sheets and XML from official Hypixel stats websites to allow for automatic updates. Users can sort the leaderboard in terms of wins or kills."
+        "description": "Created a dynamic, live leaderboard for the Assassins minigame on the Hypixel Minecraft server. Scraped and parsed data using Google Sheets and XML from official Hypixel stats websites to allow for automatic updates."
     }
 ]

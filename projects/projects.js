@@ -7,4 +7,4 @@ console.log(projects)
 const projectsContainer = document.querySelector('.projects');
 
 // Render projects
-renderProjects(projects, projectsContainer, 'h2');
+renderProjects(projects, projectsContainer, 'h3');
