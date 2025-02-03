@@ -104,20 +104,28 @@ body {
   }
 
   .projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-  gap: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    gap: 1em;
+    text-align: left;
+    article {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 4;
+      h2 {
+        margin: 1;
+      }
+      h3 {
+        margin: 1;
+      }
+      }   
+    h4 {
+      font-size: 100%; 
+      font-weight: bold;
+      margin-bottom: 0.1em;
+      font-family: Lorem ipsum dolor sit amet; 
+    }
   }
-
-  article {
-  display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 4;
-  }   
-
-  article h2 {
-  margin: 0;
-  }  
 
   section {
     h2 {

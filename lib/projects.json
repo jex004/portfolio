@@ -1,73 +1,73 @@
 [
     {
         "title": "Hypixel Murder Mystery Stats Discord Bot",
-        "year": "2025",
+        "year": "c. 2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Developed a Python-based Discord server bot that provides detailed player statistics and enables comparisons across multiple players for the 'Murder Mystery' minigame genre on the Hypixel Minecraft server."
     },
     {
         "title": "How Do Different Weather Conditions Affect NYC Subway Ridership?",
-        "year": "2025",
+        "year": "c. 2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Generated a detailed visualization that showcases the relationships between weather conditions such as rainfall and sunshine on NYC subway ridership using Altair."
     },
     {
         "title": "Playlette: A Colour Palette Generator",
-        "year": "2025",
+        "year": "c. 2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Collaborated with a team of four to develop a software tool utilizing the Spotify API to generate a custom color palette based on the mood and song attributes of a user-provided Spotify playlist."
     },
     {
         "title": "Recipe Complexity Analysis",
-        "year": "2024",
+        "year": "c. 2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Collaborated with a team member to analyze the impact of recipe complexity on recipe popularity on food.com as measured by the amount of user interactions in the form of ratings and reviews."
     },
     {
         "title": "Blah Blah Blah Blah",
-        "year": "2024",
+        "year": "c. 2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Architecto veniam fuga accusamus omnis consequatur asperiores quod ipsam corrupti neque, soluta atque alias natus repudiandae nostrum quisquam totam perspiciatis praesentium! Consectetur, eligendi magni? Sequi enim nulla dolore aliquam? Quos!"
     },
     {
         "title": "Loan Applications Project",
-        "year": "2024",
+        "year": "c. 2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Analyzed a dataset of loan applicant data to assess eligibility for loan approval based on factors such as debt-to-income ratio, FICO scores, home ownership, and more."
     },
     {
         "title": "Grade Calculator for DSC80 at UCSD",
-        "year": "2024",
+        "year": "c. 2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Quibusdam et culpa numquam veritatis dolorem! Eos quo accusamus at assumenda repellat hic voluptate voluptatem, voluptas, odio, ullam obcaecati totam illum quas dolorem necessitatibus. Non delectus quibusdam sequi accusamus aspernatur!"
     },
     {
         "title": "The Drawing Classifier Thing I Forgot the Name",
-        "year": "2023",
+        "year": "c. 2023",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Possimus velit laborum labore aliquid quos fugiat neque corporis cupiditate blanditiis, quo earum reprehenderit! Aperiam doloribus numquam consequatur unde vitae, delectus dolores blanditiis, nihil in sed corporis rem deserunt velit!"
     },
     {
         "title": "Maxime aperiam facilis vero.",
-        "year": "2023",
+        "year": "c. 2023",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Accusamus est voluptatem explicabo delectus quia exercitationem praesentium quas, minus illo soluta fugiat ullam hic corrupti laborum reiciendis! Fugit, laboriosam recusandae sit modi eligendi molestiae? Ullam laudantium distinctio non ea."
     },
     {
         "title": "Quam, laboriosam. Minus, ullam.",
-        "year": "2023",
+        "year": "c. 2023",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Minus beatae a quisquam sequi! Nulla, eveniet dolorem. Optio quis minus laborum magni ducimus nesciunt veritatis impedit molestias magnam animi quam aliquid in maxime, omnis, facilis provident nostrum, velit sequi."
     },
     {
         "title": "AP CSP Project",
-        "year": "2022",
+        "year": "c. 2022",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Natus, dolorum dolores! Ducimus totam quisquam nesciunt cupiditate veniam. Beatae, fuga doloremque pariatur doloribus molestiae quod dignissimos laudantium eum enim amet consequatur cupiditate! Nam saepe vitae quidem sapiente sed eius?"
     },
     {
         "title": "Hypixel Assassins Leaderboard",
-        "year": "2020",
+        "year": "c. 2020",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Created a dynamic, live leaderboard for the Assassins minigame on the Hypixel Minecraft server. Scraped and parsed data using Google Sheets and XML from official Hypixel stats websites to allow for automatic updates."
     }
