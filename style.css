@@ -118,13 +118,14 @@ body {
       h3 {
         margin: 1;
       }
-      }   
-    h4 {
-      font-size: 100%; 
-      font-weight: bold;
-      margin-bottom: 0.1em;
-      font-family: Lorem ipsum dolor sit amet; 
-    }
+      p.year {
+        font-size: 100%; 
+        color:rgb(112, 113, 113);
+        margin-bottom: 0.1em;
+        font-family: Baskerville;
+        font-variant-numeric: oldstyle-nums; 
+      }
+    }   
   }
 
   section {
@@ -165,6 +166,14 @@ body {
       font-weight: bold; 
       margin: 0;
     }
+  }
+
+  svg {
+    max-width: 20em;
+    margin-block: 2em;
+  
+    /* Do not clip shapes outside the viewBox */
+    overflow: visible;
   }
 }
 
