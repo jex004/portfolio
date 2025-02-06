@@ -260,7 +260,6 @@ body {
   gap: 0.3em; 
   padding: 0.2em 0.5em; 
   font-size: 0.9em;
-  cursor: pointer;
 }
 
 .swatch {
@@ -284,17 +283,25 @@ body {
   margin: 1em 0;
 }
 
-/* .legend li:hover {
-  background-color: color-mix(in oklch, var(--color), white 85%);
-  cursor: pointer;
-} */
-
 .searchBar {
   width: 100%;
-  max-width: 800px; /* Adjust this based on your layout */
+  max-width: 100ch;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-sizing: border-box; /* Ensures padding doesn’t affect width */
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto;
+}
+
+svg:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+path {
+  transition: 300ms;
+  cursor: pointer;
 }
