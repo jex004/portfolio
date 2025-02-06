@@ -13,14 +13,25 @@ renderProjects(projects, projectsContainer, 'h3');
 
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
-let data = [1, 2];
+let sliceGenerator = d3.pie().value((d) => d.value);
+
+let rolledData = d3.rollups(
+  projects,
+  (v) => v.length,
+  (d) => d.year,
+);
+
+let data = rolledData.map(([year, count]) => {
+    return { value: count, label: year };
+  });
 let total = 0;
 
 for (let d of data) {
   total += d;
 }
 let angle = 0;
-let arcData = [];
+let arcData = sliceGenerator(data);
+
 
 for (let d of data) {
   let endAngle = angle + (d / total) * 2 * Math.PI;
@@ -33,10 +44,15 @@ arcs.forEach(arc => {
     d3.select('svg').append('path').attr('d', arc).attr('fill', 'red');
   })
 
-let colors = ['gold', 'purple'];
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
 arcs.forEach((arc, idx) => {
-    d3.select('svg')
-      .append('path')
-      .attr('d', arc)
-      .attr('fill', colors[idx]) // Fill in the attribute for fill color via indexing the colors variable
+    d3.select('svg').append('path').attr('d', arc).attr('fill', colors(idx))
 })
+
+let legend = d3.select('.legend');
+data.forEach((d, idx) => {
+    legend.append('li')
+          .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
+          .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
+})
+
