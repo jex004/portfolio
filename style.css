@@ -288,3 +288,13 @@ body {
   background-color: color-mix(in oklch, var(--color), white 85%);
   cursor: pointer;
 } */
+
+.searchBar {
+  width: 100%;
+  max-width: 800px; /* Adjust this based on your layout */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Ensures padding doesn’t affect width */
+}
