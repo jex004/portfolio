@@ -233,8 +233,9 @@ body {
   display: flex;
   align-items: center;
   gap: 0.3em; 
-  padding: 0.2em 0.5em; 
+  padding: 0.2em 0.2em; 
   font-size: 0.9em;
+  cursor: pointer;
 }
 
 .swatch {
@@ -281,8 +282,17 @@ path {
   cursor: pointer;
 }
 
+path.faded {
+  opacity: 0.5;
+}
+
+path.selected {
+  opacity: 1;
+}
+
 .selected {
   --color: oklch(60% 45% 0) !important;
+  font-weight: bold;
 
   &:is(path) {
     fill: var(--color);
