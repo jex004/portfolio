@@ -16,55 +16,106 @@ let selectedIndex = -1;
 let searchQuery = "";
 
 function renderPieChart(projectsGiven) {
+    // Clear previous chart and legend
     svg.selectAll('path').remove();
     legend.selectAll('li').remove();
   
-    let newRolledData = d3.rollups(projectsGiven, v => v.length, d => d.year);
-    let newData = newRolledData.map(([year, count]) => ({ value: count, label: year }));
+    // Recalculate data
+    let newRolledData = d3.rollups(
+      projectsGiven,
+      (v) => v.length,
+      (d) => d.year
+    );
   
-    let newSliceGenerator = d3.pie().value(d => d.value);
+    let newData = newRolledData.map(([year, count]) => ({
+      value: count,
+      label: year
+    }));
+  
+    let total = d3.sum(newData, (d) => d.value);
+    
+    let newSliceGenerator = d3.pie().value((d) => d.value);
     let newArcData = newSliceGenerator(newData);
     let newArcGenerator = d3.arc().innerRadius(0).outerRadius(50);
   
+    // Draw arcs
     svg.selectAll('path')
       .data(newArcData)
       .enter()
       .append('path')
       .attr('d', newArcGenerator)
       .attr('fill', (_, idx) => colors(idx))
-      .attr('data-index', (_, idx) => idx)
+      .attr('class', (_, idx) => (selectedIndex === idx ? 'selected' : ''))
       .on('click', function (event, d) {
-        let clickedIndex = newData.findIndex(data => data.label === d.data.label);
+        let clickedIndex = newData.findIndex((data) => data.label === d.data.label);
+        
+        // Toggle selection
         selectedIndex = selectedIndex === clickedIndex ? -1 : clickedIndex;
+  
+        // Update class for selected pie wedge
+        svg.selectAll('path')
+          .attr('class', (_, idx) => (selectedIndex === idx ? 'selected' : ''));
+  
+        // Update class for legend item
+        legend.selectAll('li')
+          .attr('class', (_, idx) => (selectedIndex === idx ? 'selected' : ''));
+  
         applyFilters();
       });
   
+    // Update legend
     legend.selectAll('li')
       .data(newData)
       .enter()
       .append('li')
       .attr('style', (_, idx) => `--color:${colors(idx)}`)
-      .html(d => `<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
+      .attr('class', (_, idx) => (selectedIndex === idx ? 'selected' : ''))
+      .html((d) => `<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
       .on('click', function (event, d) {
-        let clickedIndex = newData.findIndex(data => data.label === d.label);
+        let clickedIndex = newData.findIndex((data) => data.label === d.label);
+  
+        // Toggle selection
         selectedIndex = selectedIndex === clickedIndex ? -1 : clickedIndex;
+  
+        // Update class for selected legend item
+        legend.selectAll('li')
+          .attr('class', (_, idx) => (selectedIndex === idx ? 'selected' : ''));
+  
+        // Update class for pie wedges
+        svg.selectAll('path')
+          .attr('class', (_, idx) => (selectedIndex === idx ? 'selected' : ''));
+  
         applyFilters();
       });
-}
+  }
 
 function applyFilters() {
-  let filteredProjects = projects.filter(project => {
-    return (!searchQuery || Object.values(project).join('\n').toLowerCase().includes(searchQuery)) &&
-           (selectedIndex === -1 || project.year === d3.rollups(projects, v => v.length, d => d.year)[selectedIndex][0]);
-  });
+  let filteredProjects = projects;
   
+  if (searchQuery) {
+    filteredProjects = filteredProjects.filter((project) => {
+      return Object.values(project).join('\n').toLowerCase().includes(searchQuery);
+    });
+  }
+  
+  if (selectedIndex !== -1) {
+    let newData = d3.rollups(
+      projects,
+      (v) => v.length,
+      (d) => d.year
+    ).map(([year, count]) => ({
+      value: count,
+      label: year
+    }));
+    
+    let selectedLabel = newData[selectedIndex].label;
+    filteredProjects = filteredProjects.filter(project => project.year === selectedLabel);
+  }
+
   renderProjects(filteredProjects, projectsContainer, 'h2');
-  svg.selectAll('path').classed('faded', selectedIndex !== -1);
-  svg.selectAll('path').each(function(_, idx) {
-    d3.select(this).classed('selected', idx === selectedIndex);
-  });
 }
 
+// Initial render
 renderProjects(projects, projectsContainer, 'h3');
 renderPieChart(projects);
 

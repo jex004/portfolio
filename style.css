@@ -282,14 +282,6 @@ path {
   cursor: pointer;
 }
 
-path.faded {
-  opacity: 0.5;
-}
-
-path.selected {
-  opacity: 1;
-}
-
 .selected {
   --color: oklch(60% 45% 0) !important;
   font-weight: bold;
@@ -297,4 +289,12 @@ path.selected {
   &:is(path) {
     fill: var(--color);
   }
+}
+
+path.faded {
+  opacity: 0.5;
+}
+
+path.selected {
+  opacity: 1;
 }
