@@ -5,6 +5,7 @@ const pages = [
   { url: 'projects/', title: 'Projects' },
   { url: 'contact/', title: 'Contact' },
   { url: 'CV/', title: 'CV' },
+  { url: 'meta/', title: 'Meta' },
   { url: 'https://github.com/jex004', title: 'GitHub' }
 ];
 
@@ -37,14 +38,16 @@ for (let p of pages) {
     a.classList.add('current');
   }
 
-  // Open external links in a new tab
-  if (!url.startsWith(BASE_PATH) && !url.startsWith('/')) {
+  // Ensure external links open in a new tab
+  if (p.url.startsWith('http')) {
     a.target = '_blank';
+    a.rel = 'noopener noreferrer'; // Prevents security issues
   }
 
   // Add the link to the navigation
   nav.append(a);
 }
+
 
 
 // Add the theme switcher
