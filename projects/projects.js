@@ -10,7 +10,20 @@ const projectsContainer = document.querySelector('.projects');
 const searchInput = document.querySelector('.searchBar');
 const svg = d3.select('svg');
 const legend = d3.select('.legend');
-const colors = d3.scaleOrdinal(d3.schemeTableau10);
+
+const blueColors = [
+  "#176087",
+  "#d9dcd6",
+  "#16425b",
+  "#3a7ca5",
+  "#81c3d7",
+  "#4f6d7a",
+  "#c0c0c0",
+  "#c0d6df",
+  "#a3d5ff"
+];
+
+const colors = d3.scaleOrdinal(blueColors);
 
 let selectedIndex = -1;
 let searchQuery = "";
