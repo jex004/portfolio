@@ -1,6 +1,7 @@
 // Global variables
 let data = [];
 let commits = [];
+let xScale, yScale;
 
 // Function to load and parse the CSV file
 async function loadData() {
@@ -110,6 +111,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 function createScatterplot() {
     const width = window.innerWidth * 0.9;  
     const height = 800;
+
+    const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
   
     // Select the container and append an SVG
     const svg = d3
@@ -120,32 +123,44 @@ function createScatterplot() {
         .style("overflow", "visible");
   
     // Define X and Y scales
-    const xScale = d3
+    xScale = d3
       .scaleTime()
       .domain(d3.extent(commits, (d) => d.datetime))
       .range([0, width])
       .nice();
   
-    const yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
+    yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
 
     const dots = svg.append('g').attr('class', 'dots');
 
+    const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
+    const rScale = d3
+    .scaleSqrt() // Change only this line
+    .domain([minLines, maxLines])
+    .range([2, 30]);
+
     dots
-    .selectAll('circle')
+    .selectAll('circle').data(sortedCommits).join('circle')
     .data(commits)
     .join('circle')
     .attr('cx', (d) => xScale(d.datetime))
     .attr('cy', (d) => yScale(d.hourFrac))
     .attr('r', 5)
     .attr('fill', 'steelblue')
-    .on('mouseenter', (event, commit) => {
-        updateTooltipContent(commit);
+    .attr('r', (d) => rScale(d.totalLines))
+    .style('fill-opacity', 0.7) // Add transparency for overlapping dots
+    .on('mouseenter', function (event, d, i) {
+        d3.select(event.currentTarget).style('fill-opacity', 1); // Full opacity on hover
+        updateTooltipContent(d);
         updateTooltipVisibility(true);
         updateTooltipPosition(event);
     })
-    .on('mouseleave', () => {
+    
+    .on('mouseleave', function (event, d) {
+        d3.select(event.currentTarget).style('fill-opacity', 0.7); // Restore transparency
         updateTooltipContent({});
-        updateTooltipVisibility(false);
+        updateTooltipVisibility(false)
+    
     });
       
     const margin = { top: 10, right: 0, bottom: 30, left: 30 };
@@ -199,6 +214,8 @@ function createScatterplot() {
 
     // Create gridlines as an axis with no labels and full-width ticks
     gridlines.call(d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width));
+
+    brushSelector();    
   }
 
 function updateTooltipContent(commit) {
@@ -231,6 +248,34 @@ function updateTooltipPosition(event) {
     tooltip.style.top = `${event.clientY}px`;
   }
 
+function brushSelector() {
+    const svg = document.querySelector('svg');
+    d3.select(svg).call(d3.brush().on('start brush end', brushed));
+    d3.select(svg).selectAll('.dots, .overlay ~ *').raise();
+}
+
+let brushSelection = null;
+
+function brushed(event) {
+  brushSelection = event.selection;
+  updateSelection();
+}
+
+function isCommitSelected(commit) {
+  if (!brushSelection) {
+    return false;
+  }
+  const min = { x: brushSelection[0][0], y: brushSelection[0][1] };
+  const max = { x: brushSelection[1][0], y: brushSelection[1][1] };
+  const x = xScale(commit.datetime);
+  const y = yScale(commit.hourFrac);
+  return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
+}
+
+function updateSelection() {
+  // Update visual state of dots based on selection
+  d3.selectAll('circle').classed('selected', (d) => isCommitSelected(d));
+}
 
 
 
