@@ -100,22 +100,22 @@ function displayStats() {
     dl.append("dd").text(value);
   }
 
-  // Run loadData() once the page is fully loaded
+// Run loadData() once the page is fully loaded
 document.addEventListener("DOMContentLoaded", async () => {
     await loadData();
-  });
-
-const width = 1000;
-const height = 600;
+});
 
 function createScatterplot() {
+    const width = window.innerWidth * 0.9;  
+    const height = 800;
   
     // Select the container and append an SVG
     const svg = d3
-      .select("#chart")
-      .append("svg")
-      .attr("viewBox", `0 0 ${width} ${height}`)
-      .style("overflow", "visible");
+        .select("#chart")
+        .append("svg")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .style("max-width", "100%")  // Makes it responsive
+        .style("overflow", "visible");
   
     // Define X and Y scales
     const xScale = d3
@@ -136,7 +136,76 @@ function createScatterplot() {
       .attr("cx", (d) => xScale(d.datetime))
       .attr("cy", (d) => yScale(d.hourFrac))
       .attr("r", 5)
-      .attr("fill", "steelblue");
+      .attr("fill", "steelblue")
+      .on('mouseenter', (event, commit) => {
+        updateTooltipContent(commit);
+      })
+      .on('mouseleave', () => {
+        updateTooltipContent({}); // Clear tooltip content
+      });
+      
+    const margin = { top: 10, right: 0, bottom: 30, left: 30 };
+
+    const usableArea = {
+        top: margin.top,
+        right: width - margin.right,
+        bottom: height - margin.bottom,
+        left: margin.left,
+        width: width - margin.left - margin.right,
+        height: height - margin.top - margin.bottom,
+    };
+      
+    // Update scales with new ranges
+    xScale.range([usableArea.left, usableArea.right]);
+    yScale.range([usableArea.bottom, usableArea.top]);
+
+    // Create the axes
+    const xAxis = d3.axisBottom(xScale);
+    const yAxis = d3
+      .axisLeft(yScale)
+      .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00');
+
+    // Add X axis
+    svg
+    .append("g")
+    .attr("transform", `translate(0, ${usableArea.bottom})`)
+    .call(d3.axisBottom(xScale)) // Increase tick size
+    .attr("font-size", "14px")  // Larger font for better readability
+    .attr("font-weight", "bold")
+    .selectAll("text")  
+    .attr("dy", "1em") 
+    .attr("text-anchor", "middle");
+
+    // Add Y axis with larger text and better spacing
+    svg
+    .append("g")
+    .attr("transform", `translate(${usableArea.left}, 0)`)
+    .call(d3.axisLeft(yScale).tickFormat((d) => String(d % 24).padStart(2, "0") + ":00"))
+    .attr("font-size", "14px")
+    .attr("font-weight", "bold")
+    .selectAll("text")
+    .attr("dx", "-0.5em") 
+    .attr("text-anchor", "end");
+
+    // Add gridlines BEFORE the axes
+    const gridlines = svg
+      .append('g')
+      .attr('class', 'gridlines')
+      .attr('transform', `translate(${usableArea.left}, 0)`);
+
+    // Create gridlines as an axis with no labels and full-width ticks
+    gridlines.call(d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width));
   }
 
+function updateTooltipContent(commit) {
+  const link = document.getElementById('commit-link');
+  const date = document.getElementById('commit-date');
 
+  if (Object.keys(commit).length === 0) return;
+
+  link.href = commit.url;
+  link.textContent = commit.id;
+  date.textContent = commit.datetime?.toLocaleString('en', {
+    dateStyle: 'full',
+  });
+}
