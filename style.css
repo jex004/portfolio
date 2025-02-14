@@ -346,26 +346,31 @@ path.selected {
   display: none;
 }
 
-/* Grid layout for the tooltip and other info sections */
 dl.info {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 5px;
-  margin: 0; /* Remove default margins */
+  margin: 0; 
   padding: 5px;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
 }
 
-/* Style the labels (dt) to be less prominent */
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
 dl.info dt {
   font-weight: bold;
-  color: #666; /* Lighter color for labels */
+  color: #666; 
   text-align: left;
+  margin-right: 2px;
 }
 
-/* Style the values (dd) to stand out */
 dl.info dd {
   margin: 0;
-  color: #000; /* Darker color for readability */
+  color: #000; 
   font-weight: normal;
 }
 

@@ -13,6 +13,8 @@ async function loadData() {
     datetime: new Date(row.datetime), // Convert full datetime
   }));
 
+  console.log(data);
+
   displayStats();
   createScatterplot();
 }
@@ -125,24 +127,26 @@ function createScatterplot() {
       .nice();
   
     const yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
-  
-    // Append circles for each commit
-    svg
-      .append("g")
-      .attr("class", "dots")
-      .selectAll("circle")
-      .data(commits)
-      .join("circle")
-      .attr("cx", (d) => xScale(d.datetime))
-      .attr("cy", (d) => yScale(d.hourFrac))
-      .attr("r", 5)
-      .attr("fill", "steelblue")
-      .on('mouseenter', (event, commit) => {
+
+    const dots = svg.append('g').attr('class', 'dots');
+
+    dots
+    .selectAll('circle')
+    .data(commits)
+    .join('circle')
+    .attr('cx', (d) => xScale(d.datetime))
+    .attr('cy', (d) => yScale(d.hourFrac))
+    .attr('r', 5)
+    .attr('fill', 'steelblue')
+    .on('mouseenter', (event, commit) => {
         updateTooltipContent(commit);
-      })
-      .on('mouseleave', () => {
-        updateTooltipContent({}); // Clear tooltip content
-      });
+        updateTooltipVisibility(true);
+        updateTooltipPosition(event);
+    })
+    .on('mouseleave', () => {
+        updateTooltipContent({});
+        updateTooltipVisibility(false);
+    });
       
     const margin = { top: 10, right: 0, bottom: 30, left: 30 };
 
@@ -200,6 +204,9 @@ function createScatterplot() {
 function updateTooltipContent(commit) {
   const link = document.getElementById('commit-link');
   const date = document.getElementById('commit-date');
+  const time = document.getElementById('commit-time');
+  const author = document.getElementById('commit-author');
+  const lines_edited = document.getElementById('commit-lines-edited');
 
   if (Object.keys(commit).length === 0) return;
 
@@ -208,4 +215,22 @@ function updateTooltipContent(commit) {
   date.textContent = commit.datetime?.toLocaleString('en', {
     dateStyle: 'full',
   });
+  time.textContent = commit.time;
+  author.textContent = commit.author;
+  lines_edited.textContent = commit.totalLines;
 }
+
+function updateTooltipVisibility(isVisible) {
+  const tooltip = document.getElementById('commit-tooltip');
+  tooltip.hidden = !isVisible;
+}
+
+function updateTooltipPosition(event) {
+    const tooltip = document.getElementById('commit-tooltip');
+    tooltip.style.left = `${event.clientX}px`;
+    tooltip.style.top = `${event.clientY}px`;
+  }
+
+
+
+
