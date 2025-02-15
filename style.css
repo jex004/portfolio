@@ -334,7 +334,7 @@ path.selected {
 
 #chart {
   width: 100%;
-  height: 300px;
+  height: 560px;
 }
 
 .gridlines .tick line {
@@ -415,6 +415,39 @@ circle:hover {
 circle.selected {
   fill: #ff6b6b;
 }
+
+#language-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1em;
+  padding: 1em;
+  font-family: monospace;
+  text-align: center;
+}
+
+#language-breakdown dt,
+#language-breakdown dd {
+  grid-column: span 1;
+}
+
+#language-breakdown dt {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+#language-breakdown dd {
+  margin: 0;
+  font-size: 1rem;
+}
+
+#language-breakdown dd:nth-of-type(2) { 
+  font-size: 0.9rem;
+  color: gray;
+}
+
+
+
 
 
 
