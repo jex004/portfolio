@@ -10,11 +10,9 @@ async function loadData() {
     line: Number(row.line), // Convert to number
     depth: Number(row.depth),
     length: Number(row.length),
-    date: new Date(row.date + "T00:00" + row.timezone), // Convert to Date object
-    datetime: new Date(row.datetime), // Convert full datetime
+    date: new Date(row.date + "T00:00" + row.timezone),
+    datetime: new Date(row.datetime),
   }));
-
-  console.log(data);
 
   displayStats();
   createScatterplot();
