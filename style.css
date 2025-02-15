@@ -417,34 +417,36 @@ circle.selected {
 }
 
 #language-breakdown {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1em;
-  padding: 1em;
-  font-family: monospace;
+  display: flex;
+  justify-content: space-around;
+  max-width: 500px;
+  margin: 20px auto;
   text-align: center;
+  font-family: Andale Mono, monospace;
 }
 
-#language-breakdown dt,
-#language-breakdown dd {
-  grid-column: span 1;
+#language-breakdown div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #language-breakdown dt {
   font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 #language-breakdown dd {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
-#language-breakdown dd:nth-of-type(2) { 
-  font-size: 0.9rem;
+#language-breakdown dd:last-child {
+  font-size: 1rem;
   color: gray;
 }
+
 
 
 
