@@ -136,7 +136,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
       <${headingLevel}>${project.title}</${headingLevel}>
       <img src="${project.image}" alt="${project.title}">
       <div>
-        <p>${project.url}</p>
+        <a href="${project.url}" target="_blank" rel="noopener noreferrer">${project.url}</a>
         <p>${project.description}</p>
         <p class="year">${project.year}</p>
       </div>
